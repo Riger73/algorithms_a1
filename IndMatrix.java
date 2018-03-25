@@ -52,11 +52,19 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
             System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
             return;
         }
+        
+        else {
+            Labels.add(srcLabel);
+            Labels.add(tarLabel);
+            Ind.add(createEmptyArrayList(Ind.size()));
 
-        Ind.get(srcIndex).set(tarIndex, (byte) 1);
-        Ind.get(tarIndex).set(srcIndex, (byte) 1);
+            for (ArrayList<Byte> incidence : Ind) {
+                incidence.add((byte) 0);
+            }
 
-        display();
+            display();
+        }
+            
     } // end of addEdge()
     
 
@@ -86,12 +94,10 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
             System.out.printf("\n%s does not Exists",vertLabel);
             return;
         }
-
-        //Remove from the edges list;
-        
+      
         Labels.remove(index);
-        for (ArrayList<Byte> innerEdges : Ind) {
-            innerEdges.remove(index);
+        for (ArrayList<Byte> incidences : Ind) {
+            incidences.remove(index);
         }
 
         Labels.remove(index);
@@ -108,33 +114,30 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
             System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
             return;
         }
-
-        Ind.get(srcIndex).set(tarIndex, (byte) 0);
-        Ind.get(tarIndex).set(srcIndex, (byte) 0);
-
+        
+        Labels.remove(srcIndex);
+        Labels.remove(tarIndex);
+        for (ArrayList<Byte> incidences : Ind) {
+            incidences.remove(srcIndex);
+            incidences.remove(tarIndex);
+        }
 
     } // end of removeEdges()
     
     
     public void printVertices(PrintWriter os) {
         
-        for (T vert : Labels) {
-            os.printf("%s ", vert);
+        for (T label : Labels) {
+            os.printf("%s ", label);
         }
     } // end of printVertices()
     
     
     public void printEdges(PrintWriter os) {
         
-        for (int i = 0; i < Ind.size(); i++){
-
-            for (int j = 0; j < Ind.size(); j++){
-                if (Ind.get(i).get(j) == (byte) 1)
-                    os.printf("%s %s\n",Ind.get(i),Ind.get(j));
-            }
+        for (T label : Labels) {
+            os.printf("%s ", label);
         }
-
-
     } // end of printEdges()
     
     
@@ -218,5 +221,6 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     }
     
 } // end of class IndMatrix
+
 
 
