@@ -201,22 +201,30 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
 
 
     private void display(){
-
+        T srcLabel = null;
+        T tarLabel = null;
+        
+        int srcIndex = Labels.indexOf(srcLabel);
+        int tarIndex = Labels.indexOf(tarLabel);
+        
         System.out.printf("\n   ");
-        for (T vert : Labels) {
-            System.out.printf("%s  ",vert);
+        for (T label : Labels) {
+            System.out.printf("%s  ",label);
         }
 
-        for (int col = 0; col < Labels.size(); col++){
+        for (int i = 0; i < Labels.size(); i++){
 
-            System.out.printf("\n%s |",Ind.get(col));
-            for (byte incidence : Ind.get(col)) {        
-                System.out.printf("%s, ", incidence);
+            for (int j = 0; j < Labels.size(); j++){
+                if (srcIndex == -1 || tarIndex == -1)
+                    System.out.printf("\n%s |",Labels.get(i),Labels.get(j));
+                for (byte incidence : Ind.get(i)) {        
+                    System.out.printf("%s, ", incidence);
+                }
+                System.out.printf("|");
             }
-            System.out.printf("|");
         }
         System.out.printf("\n");
-    }
+}
 
     private ArrayList<Byte> createEmptyArrayList(int size){
 
