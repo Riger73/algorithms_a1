@@ -140,10 +140,56 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     
     public int shortestPathDistance(T vertLabel1, T vertLabel2) {
     	// Implement me!
-    	
+        
+
+        //T[] visitedLabels = new T[Labels.size()];
+
+        boolean[] visited = new boolean[Labels.size()];
+        int[] distances = new int[Labels.size()];
+        
+        Queue <T> queue = new LinkedList<T>();
+
+        T curVert = vertLabel1;
+        int curIndex = Labels.indexOf(vertLabel1);
+
+        int wantedIndex = Labels.indexOf(vertLabel2);
+
+
+        if (curIndex == wantedIndex)
+            return 0;
+
+        while (curVert != null){
+
+            if (!visited[curIndex]){
+                visited[curIndex] = true;
+
+                for(T nVert : neighbours(curVert)){
+                    int nIndex = Labels.indexOf(nVert);
+
+                    if (visited[nIndex])
+                        continue;
+
+                    System.out.printf("  - Checking %s: %s", curVert,nVert);
+
+                    if (nIndex == wantedIndex){
+                        System.out.printf("  (%s = %s)\n",nVert, vertLabel2);
+                        return distances[curIndex] + 1;
+                    }else {
+                        System.out.printf("  (%s != %s)\n",nVert, vertLabel2);
+                        distances[nIndex] = distances[curIndex] + 1;
+                        queue.add(nVert);
+                    }
+                } //end For
+            } //end (if !visited)
+        
+            curVert = queue.poll();
+            curIndex = Labels.indexOf(curVert);
+        }//end While
+
         // if we reach this point, source and target are disconnected
         return disconnectedDist;    	
     } // end of shortestPathDistance()
+
 
 
     private void printMatrix(){
