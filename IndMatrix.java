@@ -134,9 +134,17 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     
     public void printEdges(PrintWriter os) {
+        T srcLabel = null;
+        T tarLabel = null;
         
-        for (T label : Labels) {
-            os.printf("%s ", label);
+        int srcIndex = Labels.indexOf(srcLabel);
+        int tarIndex = Labels.indexOf(tarLabel);
+        for (int i = 0; i < Labels.size(); i++){
+
+            for (int j = 0; j < Labels.size(); j++){
+                if (srcIndex == -1 || tarIndex == -1)
+                    os.printf("%s %s\n",Labels.get(i),Labels.get(j));
+            }
         }
     } // end of printEdges()
     
