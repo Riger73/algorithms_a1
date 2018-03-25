@@ -13,8 +13,6 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
 {
 
     private ArrayList<T> Labels;
-    private ArrayList<T> Verts;
-    private ArrayList<T> Edges;
     private ArrayList<ArrayList<Byte>> Ind;
 
 
@@ -22,16 +20,16 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
      * Contructs empty graph.
      */
     public IndMatrix() {
-        Verts = new ArrayList<T>();
-        Edges = new ArrayList<T>();
+        Labels = new ArrayList<T>();
+        Labels = new ArrayList<T>();
         Ind = new ArrayList<ArrayList<Byte>>();
     } // end of IndMatrix()
     
     
     public void addVertex(T vertLabel) {
         
-        if (!Verts.contains(vertLabel)){
-            Verts.add(vertLabel);
+        if (!Labels.contains(vertLabel)){
+            Labels.add(vertLabel);
             Ind.add(createEmptyArrayList(Ind.size()));
 
             for (ArrayList<Byte> incidence : Ind) {
@@ -48,8 +46,8 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     public void addEdge(T srcLabel, T tarLabel) {
         
-        int srcIndex = Verts.indexOf(srcLabel);
-        int tarIndex = Verts.indexOf(tarLabel);
+        int srcIndex = Labels.indexOf(srcLabel);
+        int tarIndex = Labels.indexOf(tarLabel);
         if (srcIndex == -1 || tarIndex == -1){
             System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
             return;
@@ -65,15 +63,15 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     public ArrayList<T> neighbours(T vertLabel) {
         ArrayList<T> neighbours = new ArrayList<T>();
         
-        int index = Verts.indexOf(vertLabel);
+        int index = Labels.indexOf(vertLabel);
         if (index == -1){
             System.out.printf("\n%s does not Exists",vertLabel);
             return neighbours;
         }
         
-        for (int i = 0; i < Verts.size(); i++)
+        for (int i = 0; i < Labels.size(); i++)
             if (Ind.get(index).get(i) == 1)
-                neighbours.add(Verts.get(i));
+                neighbours.add(Labels.get(i));
 
 
         return neighbours;
@@ -82,7 +80,7 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     public void removeVertex(T vertLabel) {
         
-        int index = Verts.indexOf(vertLabel);
+        int index = Labels.indexOf(vertLabel);
 
         if (index == -1){
             System.out.printf("\n%s does not Exists",vertLabel);
@@ -91,12 +89,12 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
 
         //Remove from the edges list;
         
-        Edges.remove(index);
+        Labels.remove(index);
         for (ArrayList<Byte> innerEdges : Ind) {
             innerEdges.remove(index);
         }
 
-        Verts.remove(index);
+        Labels.remove(index);
 
         display();
     } // end of removeVertex()
@@ -104,8 +102,8 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     public void removeEdge(T srcLabel, T tarLabel) {
         
-        int srcIndex = Verts.indexOf(srcLabel);
-        int tarIndex = Verts.indexOf(tarLabel);
+        int srcIndex = Labels.indexOf(srcLabel);
+        int tarIndex = Labels.indexOf(tarLabel);
         if (srcIndex == -1 || tarIndex == -1){
             System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
             return;
@@ -120,7 +118,7 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     public void printVertices(PrintWriter os) {
         
-        for (T vert : Verts) {
+        for (T vert : Labels) {
             os.printf("%s ", vert);
         }
     } // end of printVertices()
@@ -143,15 +141,15 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     public int shortestPathDistance(T vertLabel1, T vertLabel2) {
         // Implement me!
     
-        boolean[] checked = new boolean[Verts.size()];
-        int[] distances = new int[Verts.size()];
+        boolean[] checked = new boolean[Labels.size()];
+        int[] distances = new int[Labels.size()];
         
         Queue <T> queue = new LinkedList<T>();
 
         T curVert = vertLabel1;
-        int curIndex = Verts.indexOf(vertLabel1);
+        int curIndex = Labels.indexOf(vertLabel1);
 
-        int wantedIndex = Verts.indexOf(vertLabel2);
+        int wantedIndex = Labels.indexOf(vertLabel2);
 
 
         if (curIndex == wantedIndex)
@@ -163,7 +161,7 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
                 checked[curIndex] = true;
 
                 for(T nVert : neighbours(curVert)){
-                    int nIndex = Verts.indexOf(nVert);
+                    int nIndex = Labels.indexOf(nVert);
 
                     if (checked[nIndex])
                         continue;
@@ -182,7 +180,7 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
             } //end (if !checked)
         
             curVert = queue.poll();
-            curIndex = Verts.indexOf(curVert);
+            curIndex = Labels.indexOf(curVert);
         }//end While
 
         // if we reach this point, source and target are disconnected
@@ -194,11 +192,11 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     private void display(){
 
         System.out.printf("\n   ");
-        for (T vert : Verts) {
+        for (T vert : Labels) {
             System.out.printf("%s  ",vert);
         }
 
-        for (int col = 0; col < Edges.size(); col++){
+        for (int col = 0; col < Labels.size(); col++){
 
             System.out.printf("\n%s |",Ind.get(col));
             for (byte incidence : Ind.get(col)) {        
@@ -220,4 +218,5 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     }
     
 } // end of class IndMatrix
+
 
