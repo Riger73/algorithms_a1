@@ -211,12 +211,12 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
         for (int i = 0; i < ColLabels.size(); i++){
             if (srcIndex == -1 || tarIndex == -1)
             for (int j = 0; j < ColLabels.size(); j++){
-                System.out.printf("\n%s |", ColLabels.get(i), ColLabels.get(j));
+                System.out.printf("%s  ", ColLabels.get(i), ColLabels.get(j));
             }
         }
         
         for (T label : RowLabels) {
-            System.out.printf("%s  ",label);
+            System.out.printf("\n%s |",label);
             for (byte incidence : Ind.get(i)) {        
                 System.out.printf("%s, ", incidence);
             }
