@@ -12,58 +12,212 @@ import java.util.*;
 public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 {
 
+
+    private ArrayList<T> Labels;
+    private ArrayList<ArrayList<Byte>> Edges;
+
+
 	/**
 	 * Contructs empty graph.
 	 */
     public AdjMatrix() {
-    	// Implement me!
+        Labels = new ArrayList<T>();
+        Edges = new ArrayList<ArrayList<Byte>>();
     } // end of AdjMatrix()
     
     
     public void addVertex(T vertLabel) {
-        // Implement me!
+        
+        if (!Labels.contains(vertLabel)){
+            Labels.add(vertLabel);
+            Edges.add(createEmptyArrayList(Edges.size()));
+
+            for (ArrayList<Byte> innerEdges : Edges) {
+                innerEdges.add((byte) 0);
+            }
+
+            printMatrix();
+
+        }else{
+            System.out.println("Label already Exists");
+        }
     } // end of addVertex()
 	
     
     public void addEdge(T srcLabel, T tarLabel) {
-        // Implement me!
+        
+        int srcIndex = Labels.indexOf(srcLabel);
+        int tarIndex = Labels.indexOf(tarLabel);
+        if (srcIndex == -1 || tarIndex == -1){
+            System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
+            return;
+        }
+
+        Edges.get(srcIndex).set(tarIndex, (byte) 1);
+        Edges.get(tarIndex).set(srcIndex, (byte) 1);
+
+        printMatrix();
     } // end of addEdge()
 	
 
     public ArrayList<T> neighbours(T vertLabel) {
         ArrayList<T> neighbours = new ArrayList<T>();
         
-        // Implement me!
+        int index = Labels.indexOf(vertLabel);
+        if (index == -1){
+            System.out.printf("\n%s does not Exists",vertLabel);
+            return neighbours;
+        }
         
+        for (int i = 0; i < Labels.size(); i++)
+            if (Edges.get(index).get(i) == 1)
+                neighbours.add(Labels.get(i));
+
+
         return neighbours;
     } // end of neighbours()
     
     
     public void removeVertex(T vertLabel) {
-        // Implement me!
+        
+        int index = Labels.indexOf(vertLabel);
+
+        if (index == -1){
+            System.out.printf("\n%s does not Exists",vertLabel);
+            return;
+        }
+
+        //Remove from the edges list;
+        
+        Edges.remove(index);
+        for (ArrayList<Byte> innerEdges : Edges) {
+            innerEdges.remove(index);
+        }
+
+        Labels.remove(index);
+
+        printMatrix();
     } // end of removeVertex()
 	
     
     public void removeEdge(T srcLabel, T tarLabel) {
-        // Implement me!
+        
+        int srcIndex = Labels.indexOf(srcLabel);
+        int tarIndex = Labels.indexOf(tarLabel);
+        if (srcIndex == -1 || tarIndex == -1){
+            System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
+            return;
+        }
+
+        Edges.get(srcIndex).set(tarIndex, (byte) 0);
+        Edges.get(tarIndex).set(srcIndex, (byte) 0);
+
+
     } // end of removeEdges()
 	
     
     public void printVertices(PrintWriter os) {
-        // Implement me!
+        
+        for (T label : Labels) {
+            os.printf("%s ", label);
+        }
     } // end of printVertices()
 	
     
     public void printEdges(PrintWriter os) {
-        // Implement me!
+        
+        for (int i = 0; i < Labels.size(); i++){
+
+            for (int j = 0; j < Labels.size(); j++){
+                if (Edges.get(i).get(j) == (byte) 1)
+                    os.printf("%s %s\n",Labels.get(i),Labels.get(j));
+            }
+        }
+
+
     } // end of printEdges()
     
     
     public int shortestPathDistance(T vertLabel1, T vertLabel2) {
     	// Implement me!
-    	
+        
+
+        //T[] visitedLabels = new T[Labels.size()];
+
+        boolean[] visited = new boolean[Labels.size()];
+        int[] distances = new int[Labels.size()];
+        
+        Queue <T> queue = new LinkedList<T>();
+
+        T curVert = vertLabel1;
+        int curIndex = Labels.indexOf(vertLabel1);
+
+        int wantedIndex = Labels.indexOf(vertLabel2);
+
+
+        if (curIndex == wantedIndex)
+            return 0;
+
+        while (curVert != null){
+
+            if (!visited[curIndex]){
+                visited[curIndex] = true;
+
+                for(T nVert : neighbours(curVert)){
+                    int nIndex = Labels.indexOf(nVert);
+
+                    if (visited[nIndex])
+                        continue;
+
+                    System.out.printf("  - Checking %s: %s", curVert,nVert);
+
+                    if (nIndex == wantedIndex){
+                        System.out.printf("  (%s = %s)\n",nVert, vertLabel2);
+                        return distances[curIndex] + 1;
+                    }else {
+                        System.out.printf("  (%s != %s)\n",nVert, vertLabel2);
+                        distances[nIndex] = distances[curIndex] + 1;
+                        queue.add(nVert);
+                    }
+                } //end For
+            } //end (if !visited)
+        
+            curVert = queue.poll();
+            curIndex = Labels.indexOf(curVert);
+        }//end While
+
         // if we reach this point, source and target are disconnected
         return disconnectedDist;    	
     } // end of shortestPathDistance()
+
+
+
+    private void printMatrix(){
+
+        System.out.printf("\n   ");
+        for (T label : Labels) {
+            System.out.printf("%s  ",label);
+        }
+
+        for (int i = 0; i < Edges.size(); i++){
+
+            System.out.printf("\n%s |",Labels.get(i));
+            for (byte edge : Edges.get(i)) {        
+                System.out.printf("%s, ", edge);
+            }
+            System.out.printf("|");
+        }
+        System.out.printf("\n");
+    }
+
+    private ArrayList<Byte> createEmptyArrayList(int size){
+
+        ArrayList<Byte> retVal = new ArrayList<Byte>();
+
+        while(retVal.size() < size)
+            retVal.add((byte)0);
+
+        return retVal;
+    }
     
 } // end of class AdjMatrix
