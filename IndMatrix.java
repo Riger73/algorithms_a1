@@ -199,7 +199,6 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     } // end of shortestPathDistance()
 
 
-
     private void display(){
         T srcLabel = null;
         T tarLabel = null;
@@ -208,22 +207,24 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
         int tarIndex = ColLabels.indexOf(tarLabel);
         
         System.out.printf("\n   ");
-        for (T label : RowLabels) {
-            System.out.printf("%s  ",label);
-        }
 
         for (int i = 0; i < ColLabels.size(); i++){
             if (srcIndex == -1 || tarIndex == -1)
-            for (int j = 0; j < RowLabels.size(); j++){
+            for (int j = 0; j < ColLabels.size(); j++){
                 System.out.printf("\n%s |", ColLabels.get(i), ColLabels.get(j));
-                for (byte incidence : Ind.get(i)) {        
-                    System.out.printf("%s, ", incidence);
-                }
-                System.out.printf("|");
             }
         }
+        
+        for (T label : RowLabels) {
+            System.out.printf("%s  ",label);
+            for (byte incidence : Ind.get(i)) {        
+                System.out.printf("%s, ", incidence);
+            }
+            System.out.printf("|");
+        }
+
         System.out.printf("\n");
-}
+    }
 
     private ArrayList<Byte> createEmptyArrayList(int size){
 
