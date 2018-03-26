@@ -21,7 +21,7 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     public IndMatrix() {
 
         ColLabels = new ArrayList<T>();
-        ColLabels = new ArrayList<T>();
+        RowLabels = new ArrayList<T>();
         Ind = new ArrayList<ArrayList<Byte>>();
     } // end of IndMatrix()
     
