@@ -108,8 +108,8 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     public void removeEdge(T srcLabel, T tarLabel) {
         
-        int srcIndex = RowLabels.indexOf(srcLabel);
-        int tarIndex = RowLabels.indexOf(tarLabel);
+        int srcIndex = ColLabels.indexOf(srcLabel);
+        int tarIndex = ColLabels.indexOf(tarLabel);
         if (srcIndex == -1 || tarIndex == -1){
             System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
             return;
