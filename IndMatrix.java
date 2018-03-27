@@ -13,7 +13,6 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
 {
 
     private ArrayList<T> Labels;
-    private ArrayList<T> ELabels;
     private ArrayList<ArrayList<Byte>> Edges;
 
 
@@ -22,10 +21,9 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
      */
     public IndMatrix() {
         Labels = new ArrayList<T>();
-        ELabels = new ArrayList<T>();
+        Labels = new ArrayList<T>();
         Edges = new ArrayList<ArrayList<Byte>>();
     } // end of IndMatrix()
-    
     
     public void addVertex(T vertLabel) {
         
@@ -46,23 +44,19 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     
     public void addEdge(T srcLabel, T tarLabel) {
+            
+            int srcIndex = Labels.indexOf(srcLabel);
+            int tarIndex = Labels.indexOf(tarLabel);
+            if (srcIndex == -1 || tarIndex == -1){
+                System.out.printf("\n%s does not Exists", (srcIndex == -1)? srcLabel : tarLabel);
+                return;
+            }
 
-        if (!ELabels.contains(srcLabel) && !ELabels.contains(tarLabel)) {     
-        ELabels.add(srcLabel);
-        ELabels.add(tarLabel);
-        Edges.add(createEmptyArrayList(Edges.size()));
-        
-        for (ArrayList<Byte> innerEdges : Edges) {
-            innerEdges.add((byte) 0);
-        }
+            Edges.get(srcIndex).set(tarIndex, (byte) 1);
+            Edges.get(tarIndex).set(srcIndex, (byte) 1);
 
-        display();
-
-        } else { 
-            System.out.println("Label already Exists");
-        }
-
-    } // end of addEdge()
+            display();
+        } // end of addEdge()
     
 
     public ArrayList<T> neighbours(T vertLabel) {
@@ -193,24 +187,28 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     } // end of shortestPathDistance()
 
 
-
     private void display(){
-
-        System.out.printf("\n   ");
-        for (T eLabel : ELabels) {
-            System.out.printf("E%s  ",eLabel);
+                
+        System.out.printf("\n   "); 
+        // Print Column (edge) headings
+        for (int i = 0; i < Labels.size(); i++){
+            for (int j = 0; j < Labels.size(); j++){
+                if (Edges.get(i).get(j) == (byte) 1)
+                    System.out.printf("E%s  ", Labels.get(i),Labels.get(j));
+            }
         }
-
+        // Print Row (vertices) headings
         for (int i = 0; i < Edges.size(); i++){
-
-            System.out.printf("\nV%s |",Labels.get(i));
-            /*for (byte edge : Edges.get(i)) {        
+            System.out.printf("\nV%s |", Labels.get(i));
+            // Print result - 0 if not incident and 1 if incident 
+            // (currently set to "t" for testing
+            for (byte edge : Edges.get(i)) {        
                 System.out.printf("%s, ", edge);
-            }*/
+            }
             System.out.printf("|");
         }
-        System.out.printf("\n");
-    }
+        System.out.printf("\n"); 
+    } 
 
     private ArrayList<Byte> createEmptyArrayList(int size){
 
