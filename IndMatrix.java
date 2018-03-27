@@ -188,27 +188,26 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
 
 
     private void display(){
-                
+             
         System.out.printf("\n   "); 
         // Print Column (edge) headings
-        for (int i = 0; i < Labels.size(); i++){
-            for (int j = 0; j < Labels.size(); j++){
-                if (Edges.get(i).get(j) == (byte) 1)
-                    System.out.printf("E%s  ", Labels.get(i),Labels.get(j));
+        for (int col = 0; col < Labels.size(); col++){
+            for (int i = 0; i < Labels.size(); i++){
+                if (Edges.get(i).get(i) == (byte) 1)
+                    System.out.printf("E%s  ", Labels.get(col),Labels.get(i));
             }
         }
         // Print Row (vertices) headings
-        for (int i = 0; i < Edges.size(); i++){
-            System.out.printf("\nV%s |", Labels.get(i));
-            // Print result - 0 if not incident and 1 if incident 
-            // (currently set to "t" for testing
-            for (byte edge : Edges.get(i)) {        
-                System.out.printf("%s, ", edge);
+        for (int row = 0; row < Edges.size(); row++){
+            System.out.printf("\nV%s |", Labels.get(row));
+            // Print result - 0 if not incident and 1 if incident     
+            for (byte edge : Edges.get(row)) {        
+                System.out.printf("%s, ", (edge != -1 && row < 2) ? 1 : 0);
             }
             System.out.printf("|");
-        }
+        } 
         System.out.printf("\n"); 
-    } 
+    }
 
     private ArrayList<Byte> createEmptyArrayList(int size){
 
