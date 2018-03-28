@@ -9,7 +9,7 @@ import java.util.*;
  *
  * @author Jeffrey Chan, 2016.
  */
-public class IndMatrixTest <T extends Object> implements FriendshipGraph<T> {
+public class IndMatrix <T extends Object> implements FriendshipGraph<T> {
     
     private ArrayList<T> incidenceMatrix;
     private ArrayList<ArrayList<Integer>> rows;
@@ -17,7 +17,7 @@ public class IndMatrixTest <T extends Object> implements FriendshipGraph<T> {
     
     private int edge;
     
-    public IndMatrixTest() {
+    public IndMatrix() {
         rows = new ArrayList<ArrayList<Integer>>();
         cols = new ArrayList<ArrayList<Integer>>();
         incidenceMatrix = new ArrayList<T>();
