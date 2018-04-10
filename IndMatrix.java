@@ -286,11 +286,45 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     } // end of printEdges()
     
     
-    //public int shortestPathDistance(T vertLabel1, T vertLabel2) {
-    	// Implement me!
-
-    	// if we reach this point, source and target are disconnected
-        // return shortestPathDistance;    	
-    //} // end of shortestPathDistance()	
+        // Implement me!
+        int vertex2Index;
+        if(vertLabel2 != null && (vertex2Index= vertIndex(vertLabel2)) != -1 && edges[vertex2Index] != null){
+            
+            int distance = 0;
+            PathList<T> visitedLinkedList = new PathList<T>();
+            PathList<T> unvisitLinkedList = new PathList<T>();
+            unvisitLinkedList.add(vertLabel1);
+            while(unvisitLinkedList.size() != 0){   
+                PathList<T> newUnvisitLinkedList = new PathList<T>();
+                // check through list unvisited, add all vertices neighbours into the sameStepChildrenList
+                for(int m = 0 ; m < unvisitLinkedList.size() ; m++){
+                    T current = unvisitLinkedList.get(m);
+                    
+                    //if find any vertex equals the 'end' vertex ,the shortest path has been found
+                    if(vertLabel2.equals(current)){
+                        return distance;
+                    }
+                    int curIndex = vertIndex(current);
+                    if(curIndex == -1) continue;
+                    Object[] edgeConnect = this.edges[curIndex];
+                    if(edgeConnect == null) continue;
+                    for(int n = 0 ; n < edgeConnect.length; n ++){
+                        @SuppressWarnings("unchecked")
+                        T vertex = (T)edgeConnect[n];
+                        if(vertex != null && !visitedLinkedList.contains(vertex) && !newUnvisitLinkedList.contains(vertex)){
+                            newUnvisitLinkedList.add(vertex);
+                        }
+                    }
+                    visitedLinkedList.add(current);
+                }
+                /** insert new unvisited into current position in list **/
+                unvisitLinkedList = newUnvisitLinkedList;
+                newUnvisitLinkedList = null;
+                distance++;/** update step at very beginning of sub-loop **/
+            }         
+        }
+        // if we reach this point, source and target are disconnected
+        return disconnectedDist;        
+    } // end of shortestPathDistance()  	
     
 } // end of class IndMatrix
