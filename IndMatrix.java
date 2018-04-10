@@ -349,14 +349,15 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
             System.out.printf("%s  E", edges[edgeNum]);
         }
 
-        for (int i = 0; i < vertices.length; i++){
-            System.out.printf("\n%s |", vertices[i]);
-            //for (vertices : vertices[i]) {        
-            //    System.out.printf("%s, ", edge);
-            //}
-            System.out.printf("|");
-        }
-        System.out.printf("\n");
+     for (int i = 1; i <= edges.length; i++){
+         System.out.printf("\n%s |", edges[][i]);
+         for (j = 1; j <= vertices.length; j++) {
+             System.out.printf("%s, ", edges[j][]);
+         }
+         System.out.printf("|");
+         System.out.printf("|");
+    }
+    System.out.printf("\n");
     }
   
 } // end of class IndMatrix
