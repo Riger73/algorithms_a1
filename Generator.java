@@ -9,13 +9,13 @@ public class Generator{
 	// Test class to run main and generate test cases
 	public static void main(String[] args) throws IOException{
 
-		// Accepts 2 arguments - 1st for density, eg: 0.1, 0.2, etc;
+		// Accepts 2 arguments - 1st for size, eg: 0.1, 0.2, etc;
 		// and 2nd for number of Vertices
 
-		// Deeclair class variables
-		double density = Double.parseDouble(args[0]);
+		// Declare class variables
+		double size = Double.parseDouble(args[0]);
 		int vertex = Integer.parseInt(args[1]);
-		int edges = (int) Math.round((vertex * vertex) * density);
+		int edges = (int) Math.round((vertex * vertex) * size);
 
 		// seed random number
 		Random rand_ver = new Random();
