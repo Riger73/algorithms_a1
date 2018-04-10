@@ -26,9 +26,9 @@ public class Generator{
 		PrintWriter output = new PrintWriter(new FileWriter("output.txt"));
 
 		for(int i = 0; i < edges; i++){
-			for(int k = 0; k < 2; k++){
+			for(int j = 0; j < 2; j++){
 
-				array[i][k] = -1;
+				array[i][j] = -1;
 
 			}	
 		}
