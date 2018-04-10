@@ -345,19 +345,19 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     
     private void display(){
         System.out.printf("\n   ");
-        for (int edgeNum = 1; edgeNum <= edges.length; edgeNum++) {
+        for (int i = 0; i <= verticies.length; i++) {
             System.out.printf("%s  E", edges[edgeNum]);
         }
 
-     for (int i = 1; i <= edges.length; i++){
-         System.out.printf("\n%s |", edges[][i]);
-         for (j = 1; j <= vertices.length; j++) {
-             System.out.printf("%s, ", edges[j][]);
-         }
-         System.out.printf("|");
-         System.out.printf("|");
-    }
-    System.out.printf("\n");
+        for (int i = 0; i <= edges.length; i++){
+            System.out.printf("\n%s |", edges[][i]);
+            for (j = 0; j <= vertices.length; j++) {
+                System.out.printf("%s, ", edges[j][]);
+            }
+            System.out.printf("|");
+            System.out.printf("|");
+        }
+        System.out.printf("\n");
     }
   
 } // end of class IndMatrix
