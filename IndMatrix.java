@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-
 /**
  * Incidence matrix implementation for the FriendshipGraph interface.
  * 
