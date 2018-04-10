@@ -9,6 +9,7 @@ import java.util.*;
  *
  * @author Jeffrey Chan, 2016.
  */
+ 
 public class IndMatrix <T extends Object> implements FriendshipGraph<T>
 {
 
