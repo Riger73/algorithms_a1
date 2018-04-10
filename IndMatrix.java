@@ -306,11 +306,11 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
         if(vertLabel2 != null && (vertex2Index= vertIndex(vertLabel2)) != -1 && edges[vertex2Index] != null){
             
             int distance = 0;
-            PathList<T> visitedLinkedList = new PathList<T>();
-            PathList<T> unvisitLinkedList = new PathList<T>();
+            LinkedList<T> visitedLinkedList = new LinkedList<T>();
+            LinkedList<T> unvisitLinkedList = new LinkedList<T>();
             unvisitLinkedList.add(vertLabel1);
             while(unvisitLinkedList.size() != 0){   
-                PathList<T> newUnvisitLinkedList = new PathList<T>();
+                LinkedList<T> newUnvisitLinkedList = new LinkedList<T>();
                 // check through list unvisited, add all vertices neighbours into the sameStepChildrenList
                 for(int m = 0 ; m < unvisitLinkedList.size() ; m++){
                     T current = unvisitLinkedList.get(m);
