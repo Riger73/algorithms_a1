@@ -21,7 +21,7 @@ public class Generator{
 		int[][] array = new int[edges][2];
 	
 	 	// instantiate PrintWriter
-		PrintWriter output = new PrintWriter(new FileWriter("output.txt"));
+		PrintWriter output = new PrintWriter(new FileWriter("file.txt"));
 
 		for(int i = 0; i < edges; i++){
 			for(int j = 0; j < 2; j++){
