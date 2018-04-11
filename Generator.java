@@ -13,9 +13,9 @@ public class Generator{
 		// and 2nd for number of Vertices
 
 		// Declare class variables
-		double size = Double.parseDouble(args[0]);
+		double density = Double.parseDouble(args[0]);
 		int vertex = Integer.parseInt(args[1]);
-		int edges = (int) Math.round((vertex * vertex) * size);
+		int edges = (int) Math.round((vertex * vertex) * density);
 
 		// seed random number
 		Random rand_ver = new Random();
@@ -61,10 +61,10 @@ public class Generator{
 							array[i][0] = data1;
 							array[i][1] = data2;
 							
-							data.print(array[i][0]);
-							data.print(" ");
-							data.print(array[i][1]);
-							data.print("\n");
+							output.print(array[i][0]);
+							output.print(" ");
+							output.print(array[i][1]);
+							output.print("\n");
 
 							break;
 						}
