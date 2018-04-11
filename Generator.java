@@ -1,5 +1,3 @@
-import java.io.PrintWriter;
-import java.io.File;
 import java.io.*;
 import java.util.*;
 
@@ -14,8 +12,8 @@ public class Generator{
 
 		// Declare class variables
 		double density = Double.parseDouble(args[0]);
-		int vertex = Integer.parseInt(args[1]);
-		int edges = (int) Math.round((vertex * vertex) * density);
+		int vertices = Integer.parseInt(args[1]);
+		int edges = (int) Math.round((vertices * vertices) * density);
 
 		// seed random number
 		Random rand_ver = new Random();
