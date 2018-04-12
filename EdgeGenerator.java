@@ -33,8 +33,8 @@ public class Generator{
 
 		for(int l = 0; l < edges; l++){
 
-			int data1 = rand_ver.nextInt(5000) + 1;
-			int data2 = rand_ver.nextInt(5000) + 1;	
+			int data1 = rand_ver.nextInt(4037) + 1;
+			int data2 = rand_ver.nextInt(4037) + 1;	
 
 			if(data1 == data2){
 				
