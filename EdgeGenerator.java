@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class Generator{
+public class EdgeGenerator{
 
 	// Test class to run main and generate test cases
 	public static void main(String[] args) throws IOException{
