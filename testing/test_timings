@@ -15,8 +15,11 @@ Density 0.2:
 test1.s1.in all tests adjmat D0.1 V50
 Minutes:
 3:05:75 
+3:02:02
+2:53:48
 
 Avr: 
+3:00:41
 
 Scenario 1:
 Density 0.3:
@@ -25,18 +28,47 @@ Minutes:
 
 Avr: 
 
+Scenario 2:
+Density 0.1:
+test1.s1.in all tests adjmat D0.1 V50
+Minutes:
+
+Avr:
 
 Scenario 2:
+Density 0.2:
 test1.in all tests adjmat D0.2 V50
 Minutes:
 22:15:21
 
 Avr: 
 
-Scenario 3:
+Scenario 2:
+Density 0.3:
 test1.in all tests adjmat D0.3 V50
 Minutes:
 56:32:76
+
+Avr: 
+
+Scenario 3:
+Density 0.1:
+test1.s1.in all tests adjmat D0.1 V50
+Minutes:
+
+Avr:
+
+Scenario 3:
+Density 0.2:
+test1.in all tests adjmat D0.2 V50
+Minutes:
+
+Avr: 
+
+Scenario 3:
+Density 0.3:
+test1.in all tests adjmat D0.3 V50
+Minutes:
 
 Avr: 
 
@@ -64,6 +96,7 @@ Minutes:
 Avr:
 
 Scenario 2:
+Density 0.1:
 test1.in all tests adjmat D0.2 V50
 Minutes:
 
@@ -85,8 +118,12 @@ Minutes:
 Avr:
 
 Scenario 3:
+Density 0.1:
 test1.in all tests adjmat D0.3 V50
 Minutes:
+
+
+Avr:
 
 Scenario 3:
 Density 0.2:
@@ -94,11 +131,13 @@ test1.s1.in all tests adjmat D0.1 V50
 Minutes:
 3:05:75 
 
+
 Avr: 
 
 Scenario 3:
 Density 0.3:
 test1.s1.in all tests adjmat D0.1 V50
 Minutes:
+
 
 Avr:
