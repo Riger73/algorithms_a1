@@ -59,6 +59,7 @@ Density 0.3:
 test1.in all tests adjmat D0.3 V50
 Minutes:
 56:32.76
+56:20.26
 
 Avr: 
 
