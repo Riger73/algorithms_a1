@@ -1,9 +1,41 @@
-test1.in all tests adjmat D0.1 V50
+Adjacency Matrix results:
+Scenario 1: 
+test1.s1.in all tests adjmat D0.1 V50
+Minutes:
 3.05.75 
+3.00.52
+2:53.81
 
+Avr: 
+
+Scenario 2:
 test1.in all tests adjmat D0.2 V50
+Minutes:
 22.15.21
 
+Avr: 
+
+Scenario 3:
 test1.in all tests adjmat D0.3 V50
+Minutes:
 56.32.76
 
+Avr: 
+
+
+Incidence Matrix results:
+Scenario 1: 
+test1.s1.in all tests adjmat D0.1 V50
+Minutes:
+
+Avr: 
+
+Scenario 2:
+test1.in all tests adjmat D0.2 V50
+Minutes:
+
+Avr: 
+
+Scenario 3:
+test1.in all tests adjmat D0.3 V50
+Minutes:
