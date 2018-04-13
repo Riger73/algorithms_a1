@@ -30,29 +30,39 @@ Minutes:
 1:01:07.21
 
 Avr: 
+58:58.67
 
 Scenario 2:
 Density 0.1:
 test1.s1.in all tests adjmat D0.1 V50
 Minutes:
+2:58.74
+3:05.37
+2:49.85
 
 Avr:
+2:57.99
 
 Scenario 2:
 Density 0.2:
 test1.in all tests adjmat D0.2 V50
 Minutes:
-22:15.21
+2:51.96
+2:50.57
+3:08.43
 
 Avr: 
+2:56.99
 
 Scenario 2:
 Density 0.3:
 test1.in all tests adjmat D0.3 V50
 Minutes:
 56:32.76
+56:20.26
 
 Avr: 
+
 
 Scenario 3:
 Density 0.1:
@@ -87,7 +97,7 @@ Scenario 1:
 Density 0.2:
 test1.s1.in all tests indmat D0.2 V50
 Minutes:
-3:05.75 
+
 
 Avr: 
 
@@ -109,7 +119,7 @@ Scenario 2:
 Density 0.2:
 test1.s1.in all tests indmat D0.2 V50
 Minutes:
-3:05.75 
+
 
 Avr: 
 
@@ -132,7 +142,7 @@ Scenario 3:
 Density 0.2:
 test1.s1.in all tests indmat D0.2 V50
 Minutes:
-3:05.75 
+
 
 
 Avr: 
