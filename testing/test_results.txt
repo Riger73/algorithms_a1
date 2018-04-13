@@ -60,9 +60,10 @@ test1.in all tests adjmat D0.3 V50
 Minutes:
 56:32.76
 56:20.26
+1:00:06.20
 
 Avr: 
-
+57:39.33
 
 Scenario 3:
 Density 0.1:
