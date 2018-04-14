@@ -19,7 +19,7 @@ The root folder "default" holds the bulk of the code including
 AdjMatrix.java - impliments the adjacency matrix 
 IndMatrix.java - impliments the incidence matrix
 ## unaltered startup code
-FriendshipGraph.java - provides interfaces for the FriendShip graph implimentations
+FriendshipGraph.java - provides interfaces for the FriendshipGraph implimentations
 GraphTester.java - privides the main method and runs methods to start the graph
 ## next level packages
 generation - contains random edge generator application code
