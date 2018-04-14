@@ -31,37 +31,37 @@ public class EdgeGenerator{
 			}	
 		}
 
-		for(int l = 0; l < edges; l++){
+		for(int i = 0; i < edges; i++){
 
 			int data1 = rand_ver.nextInt(4037) + 1;
 			int data2 = rand_ver.nextInt(4037) + 1;	
 
 			if(data1 == data2){
 				
-				l = l - 1;
+				i = i - 1;
 
 			}else{
 			
-				for(int i= 0; i < edges; i++){
+				for(int j= 0; j < edges; j++){
 
-					if(array[i][0] == data1 && array[i][1] == data2){
+					if(array[j][0] == data1 && array[j][1] == data2){
 
-						l = l - 1;
+						i = i - 1;
 						break;
-					}else if(array[i][0] == data2 && array[i][1] == data1){
+					}else if(array[j][0] == data2 && array[j][1] == data1){
 
-						l = l - 1;
+						i = i - 1;
 						break;
 					}else {
 						
-						if(array[i][0] == -1 && array[i][1] == -1){
+						if(array[j][0] == -1 && array[j][1] == -1){
 
-							array[i][0] = data1;
-							array[i][1] = data2;
+							array[j][0] = data1;
+							array[j][1] = data2;
 							
-							output.print(array[i][0]);
+							output.print(array[j][0]);
 							output.print(" ");
-							output.print(array[i][1]);
+							output.print(array[j][1]);
 							output.print("\n");
 
 							break;
