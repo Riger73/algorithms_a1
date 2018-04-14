@@ -13,7 +13,7 @@ public class EdgeGenerator{
 		// Declare class variables
 		double density = Double.parseDouble(args[0]);
 		int vertices = Integer.parseInt(args[1]);
-		int edges = (int) Math.round((vertices * vertices) * density);
+		int edges = (int) Math.round((vertices * (vertices - 1)) * density);
 
 		// seed random number
 		Random rand_ver = new Random();
