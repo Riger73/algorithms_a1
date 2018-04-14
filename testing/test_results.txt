@@ -15,9 +15,11 @@ Density 0.2:
 test1.s1.in all tests adjmat D0.2 V50
 Minutes:
 19:30.23
+18:57.24
+19:39.70
 
 Avr: 
-
+19:22.39
 
 Scenario 1:
 Density 0.3:
