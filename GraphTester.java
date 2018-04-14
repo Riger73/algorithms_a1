@@ -50,6 +50,8 @@ public class GraphTester
 		String line;
 		int lineNum = 1;
 		boolean bQuit = false;
+
+		long startTime = System.nanoTime();
 		
 		// continue reading in commands until we either receive the quit signal or there are no more input commands
 		while (!bQuit && (line = inReader.readLine()) != null) {
@@ -151,6 +153,10 @@ public class GraphTester
 			lineNum++;
 		}
 
+		long elapsedTime = System.nanoTime() - startTime;
+		double seconds = (double)(elapsedTime / 1000000000.0);
+		System.err.printf("\nTesting Time: %f seconds\n", seconds);
+
 	} // end of processOperations() 
 
 
@@ -251,7 +257,7 @@ public class GraphTester
 				
 				long elapsedTime = System.nanoTime() - startTime;
 				double seconds = (double)(elapsedTime / 1000000000.0);
-				System.err.printf("\nTime Ran: %f seconds", seconds);
+				System.err.printf("\nBuild Time: %f seconds\n", seconds);
 			}
 			catch (FileNotFoundException ex) {
 				System.err.println("File " + args[1] + " not found.");

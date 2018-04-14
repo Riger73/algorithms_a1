@@ -40,7 +40,9 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
         //adds a new row for vertex with the size of edges
         relations.add(createEmptyArrayList(edgeCount));
 
-        printMatrix();
+        System.out.printf("\nAdding Vertex: %s ",vertLabel);
+
+        //printMatrix();
 
 
     } // end of addVertex()
@@ -78,9 +80,10 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
 
         }
 
+        System.out.printf("\nAdding Edge: (%s,%s) ",srcLabel,tarLabel);
 
 
-        printMatrix();
+        //printMatrix();
     } // end of addEdge()
 	
 
@@ -261,7 +264,7 @@ public class IndMatrix <T extends Object> implements FriendshipGraph<T>
     } // end of shortestPathDistance()
 
 
-    private void printMatrix(){
+    public void printMatrix(){
 
         System.out.printf("\n   ");
 
