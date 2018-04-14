@@ -16,7 +16,7 @@ java -cp .:jopt-simple-5.0.2.jar GraphTester indmat -f ./testing/D0.1-V50.txt te
 ## Folder Structure
 The root folder "default" holds the bulk of the code including
 ## implemented by Joshua & Tim
-AdjMatrix.java - impliments the adjacency matrix
+AdjMatrix.java - impliments the adjacency matrix 
 IndMatrix.java - impliments the incidence matrix
 ## unaltered startup code
 FriendshipGraph.java - provides interfaces for the FriendShip graph implimentations
