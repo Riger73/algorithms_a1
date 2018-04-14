@@ -3,6 +3,7 @@ import java.util.*;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import java.lang.String;
+import java.lang.*;
 
 /**
  * Framework to test the friendship graph implementations.
@@ -49,6 +50,8 @@ public class GraphTester
 		String line;
 		int lineNum = 1;
 		boolean bQuit = false;
+
+		long startTime = System.nanoTime();
 		
 		// continue reading in commands until we either receive the quit signal or there are no more input commands
 		while (!bQuit && (line = inReader.readLine()) != null) {
@@ -150,6 +153,10 @@ public class GraphTester
 			lineNum++;
 		}
 
+		long elapsedTime = System.nanoTime() - startTime;
+		double seconds = (double)(elapsedTime / 1000000000.0);
+		System.err.printf("\nTesting Time: %f seconds\n", seconds);
+
 	} // end of processOperations() 
 
 
@@ -236,7 +243,9 @@ public class GraphTester
 		    	String delimiter = " ";
 		    	String[] tokens;
 		    	String srcLabel, tarLabel;
-		    	
+						
+				long startTime = System.nanoTime();
+
 		    	while ((line = reader.readLine()) != null) {
 		    		tokens = line.split(delimiter);
 		    		srcLabel = tokens[0];
@@ -244,7 +253,11 @@ public class GraphTester
 		    		graph.addVertex(srcLabel);
 		    		graph.addVertex(tarLabel);
 		    		graph.addEdge(srcLabel, tarLabel);
-		    	}			
+				}
+				
+				long elapsedTime = System.nanoTime() - startTime;
+				double seconds = (double)(elapsedTime / 1000000000.0);
+				System.err.printf("\nBuild Time: %f seconds\n", seconds);
 			}
 			catch (FileNotFoundException ex) {
 				System.err.println("File " + args[1] + " not found.");
