@@ -214,7 +214,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 
 
 
-    private void printMatrix(){
+    public void printMatrix(){
 
         System.out.printf("\n   ");
         for (T label : Labels) {

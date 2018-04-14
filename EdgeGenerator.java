@@ -20,8 +20,10 @@ public class EdgeGenerator{
 
 		int[][] array = new int[edges][2];
 	
+		String FileName = "Generated_V"+vertices+"_D"+density+".txt";
+
 	 	// instantiate PrintWriter
-		PrintWriter output = new PrintWriter(new FileWriter("file.txt"));
+		PrintWriter output = new PrintWriter(new FileWriter(FileName));
 
 		for(int i = 0; i < edges; i++){
 			for(int j = 0; j < 2; j++){
