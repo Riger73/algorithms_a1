@@ -4,8 +4,6 @@ import java.util.*;
 
 /**
  * Incidence matrix implementation for the FriendshipGraph interface.
- * 
- * Your task is to complete the implementation of this class.  You may add methods, but ensure your modified class compiles and runs.
  *
  * @author Timothy Novice and Joshua Reason 2018.
  */
