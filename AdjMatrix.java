@@ -7,7 +7,7 @@ import java.util.*;
  * 
  * Your task is to complete the implementation of this class.  You may add methods, but ensure your modified class compiles and runs.
  *
- * @author Jeffrey Chan, 2016.
+ * @author Timothy Novice and Joshua Reason, 2018.
  */
 public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 {
